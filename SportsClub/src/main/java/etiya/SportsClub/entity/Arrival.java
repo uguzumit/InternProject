@@ -1,7 +1,6 @@
 package etiya.SportsClub.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,15 +18,13 @@ public class Arrival {
     @Temporal(TemporalType.DATE)
     private Date date;
 
-    /*
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @JsonBackReference(value = "user-arrival")
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonManagedReference(value = "courseBundle-arrival")
+    @JsonBackReference(value = "courseBundle-arrival")
     private CourseBundle courseBundle;
-    */
 
 }

@@ -19,7 +19,6 @@ public class User {
     private String firstName;
     private String lastName;
 
-    /*
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_roles",
@@ -35,6 +34,5 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference(value = "user-arrival")
     private List<Arrival> arrivals;
-    */
 
 }

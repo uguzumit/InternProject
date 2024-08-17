@@ -21,7 +21,7 @@ public class CourseBundle {
     private int totalCourses;
     private int remainingCourses;
 
-    /*
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @JsonBackReference(value = "user-courseBundle")
@@ -30,6 +30,6 @@ public class CourseBundle {
     @OneToMany(mappedBy = "courseBundle", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference(value = "courseBundle-arrival")
     private List<Arrival> arrivals;
-    */
+
 
 }

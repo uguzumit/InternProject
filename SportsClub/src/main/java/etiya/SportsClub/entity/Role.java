@@ -1,5 +1,6 @@
 package etiya.SportsClub.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,9 +16,8 @@ public class Role {
     private Long id;
     private String roleName;
 
-    /*
     @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+    @JsonBackReference
     private List<User> users;
-    */
 
 }
