@@ -14,39 +14,37 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final UserMapper userMapper;
 
-    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.userMapper = userMapper;
     }
 
     @Override
     public UserDTO createUser(UserDTO userDTO) {
-        User user = userMapper.toEntity(userDTO);
+        User user = UserMapper.INSTANCE.toEntity(userDTO);
         User createdUser = userRepository.save(user);
-        return userMapper.toDTO(createdUser);
+        return UserMapper.INSTANCE.toDTO(createdUser);
     }
 
     @Override
     public List<UserDTO> getAllUsers() {
         return userRepository.findAll().stream()
-                .map(userMapper::toDTO)
+                .map(UserMapper.INSTANCE::toDTO)
                 .collect(Collectors.toList());
     }
 
     @Override
     public UserDTO getUserById(Long id) {
         User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
-        return userMapper.toDTO(user);
+        return UserMapper.INSTANCE.toDTO(user);
     }
 
     @Override
     public UserDTO updateUser(Long id, UserDTO userDTO) {
-        User user = userMapper.toEntity(userDTO);
+        User user = UserMapper.INSTANCE.toEntity(userDTO);
         user.setId(id);
         User updatedUser = userRepository.save(user);
-        return userMapper.toDTO(updatedUser);
+        return UserMapper.INSTANCE.toDTO(updatedUser);
     }
 
     @Override

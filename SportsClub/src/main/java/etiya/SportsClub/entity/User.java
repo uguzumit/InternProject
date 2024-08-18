@@ -27,12 +27,17 @@ public class User {
     )
     private List<Role> roles;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "user-courseBundle")
-    private List<CourseBundle> courseBundles;
+//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JsonManagedReference(value = "user-courseBundle")
+//    private List<CourseBundle> courseBundles;
+
+//    Bu Kodu UserCourseBundleRecord Entity'sinden dolayı kendim kapattım.
+//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JsonManagedReference(value = "user-arrival")
+//    private List<Arrival> arrivals;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "user-arrival")
-    private List<Arrival> arrivals;
+    @JsonManagedReference(value = "user-UserCourseBundleRecord")
+    private List<UserCourseBundleRecord> userCourseBundleRecords;
 
 }

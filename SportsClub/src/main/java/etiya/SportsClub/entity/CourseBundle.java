@@ -19,17 +19,21 @@ public class CourseBundle {
 
     @Column(columnDefinition = "int default 10")
     private int totalCourses;
-    private int remainingCourses;
+
+//    private int remainingCourses;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    @JsonBackReference(value = "user-courseBundle")
-    private User user;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id", referencedColumnName = "id")
+//    @JsonBackReference(value = "user-courseBundle")
+//    private User user;
+
+//    @OneToMany(mappedBy = "courseBundle", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JsonManagedReference(value = "courseBundle-arrival")
+//    private List<Arrival> arrivals;
 
     @OneToMany(mappedBy = "courseBundle", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "courseBundle-arrival")
-    private List<Arrival> arrivals;
-
+    @JsonManagedReference(value = "courseBundle-UserCourseBundleRecord")
+    private List<UserCourseBundleRecord> userCourseBundleRecords;
 
 }
