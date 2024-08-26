@@ -1,14 +1,15 @@
 package etiya.SportsClub.service;
 
-import etiya.SportsClub.entity.Role;
+import etiya.SportsClub.dto.RoleDTO;
 
 import java.util.List;
 
 public interface RoleService {
 
-    Role createRole(Role role);
-    List<Role> getAllRoles();
-    Role getRoleById(Long id);
+    RoleDTO createRole(RoleDTO role);
+    List<RoleDTO> getAllRoles();
+    RoleDTO getRoleById(Long id);
+    RoleDTO updateRole(Long id, RoleDTO role);
     Boolean deleteRole(Long id);
 
 }

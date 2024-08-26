@@ -6,10 +6,10 @@ import java.util.List;
 
 public interface UserService {
 
-    UserDTO createUser(UserDTO userDTO);
+    UserDTO createUser(UserDTO user);
     List<UserDTO> getAllUsers();
     UserDTO getUserById(Long id);
-    UserDTO updateUser(Long id, UserDTO userDTO);
+    UserDTO updateUser(Long id, UserDTO user);
     Boolean deleteUser(Long id);
 
 }

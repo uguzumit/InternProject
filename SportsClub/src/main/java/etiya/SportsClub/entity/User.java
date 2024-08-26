@@ -1,5 +1,6 @@
 package etiya.SportsClub.entity;
 
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -7,17 +8,17 @@ import lombok.Data;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
 @Data
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String email;
-    private String password;
     private String firstName;
     private String lastName;
+    private String email;
+    private String password;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -27,17 +28,8 @@ public class User {
     )
     private List<Role> roles;
 
-//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JsonManagedReference(value = "user-courseBundle")
-//    private List<CourseBundle> courseBundles;
-
-//    Bu Kodu UserCourseBundleRecord Entity'sinden dolayı kendim kapattım.
-//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JsonManagedReference(value = "user-arrival")
-//    private List<Arrival> arrivals;
-
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "user-UserCourseBundleRecord")
-    private List<UserCourseBundleRecord> userCourseBundleRecords;
+    @JsonManagedReference(value = "user-courseBundleRecord")
+    private List<CourseBundleRecord> courseBundleRecords;
 
 }

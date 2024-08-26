@@ -1,41 +1,43 @@
 package etiya.SportsClub.controller;
 
-import etiya.SportsClub.entity.CourseBundle;
+import etiya.SportsClub.dto.CourseBundleDTO;
 import etiya.SportsClub.service.CourseBundleService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/courseBundles")
+@RequestMapping("/api/v1/courses")
+@RequiredArgsConstructor
 public class CourseBundleController {
 
     private final CourseBundleService courseBundleService;
 
-    public CourseBundleController(CourseBundleService courseBundleService) {
-        this.courseBundleService = courseBundleService;
-    }
-
-    @PostMapping("/create")
-    public ResponseEntity<CourseBundle> createCourseBundle(@RequestBody CourseBundle courseBundle) {
+    @PostMapping("/register")
+    public ResponseEntity<CourseBundleDTO> createCourseBundle(@RequestBody CourseBundleDTO courseBundle) {
         return ResponseEntity.ok(courseBundleService.createCourseBundle(courseBundle));
     }
 
-    @GetMapping("/getAll")
-    public ResponseEntity<List<CourseBundle>> getAllCourseBundles() {
+    @GetMapping("/list")
+    public ResponseEntity<List<CourseBundleDTO>> getAllCourseBundles() {
         return ResponseEntity.ok(courseBundleService.getAllCourseBundles());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CourseBundle> getCourseBundleById(@PathVariable Long id) {
+    public ResponseEntity<CourseBundleDTO> getCourseBundleById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(courseBundleService.getCourseBundleById(id));
     }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<CourseBundleDTO> updateCourseBundle(@PathVariable("id") Long id, @RequestBody CourseBundleDTO courseBundle) {
+        return ResponseEntity.ok(courseBundleService.updateCourseBundle(id, courseBundle));
+    }
+
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Boolean> deleteCourseBundle(@PathVariable Long id) {
-        courseBundleService.deleteCourseBundle(id);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Boolean> deleteCourseBundle(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(courseBundleService.deleteCourseBundle(id));
     }
 
 }

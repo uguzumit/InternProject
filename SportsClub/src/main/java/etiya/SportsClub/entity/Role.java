@@ -7,8 +7,8 @@ import lombok.Data;
 import java.util.List;
 
 @Entity
-@Table(name = "roles")
 @Data
+@Table(name = "roles")
 public class Role {
 
     @Id
